@@ -11,6 +11,8 @@ COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV DATABASE_URL=file:./dummy.db
+ENV AUTH_SECRET=build-placeholder
 RUN npx prisma generate
 RUN npm run build
 
